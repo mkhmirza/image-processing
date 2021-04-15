@@ -11,7 +11,7 @@ import argparse
 # adding parsing arguments
 parser = argparse.ArgumentParser(
     description='Performs Power Law Transformation Method')
-parser.add_argument("--red", type=str, help="path to image file")
+parser.add_argument("--image", type=str, help="path to image file")
 
 args = vars(parser.parse_args())
 
