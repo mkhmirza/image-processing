@@ -1,25 +1,27 @@
 #!/usr/bin/python env
 
-
 import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
 import preProcessing as pre
 import argparse
 
-
 # adding parsing arguments
 parser = argparse.ArgumentParser(description='Difference Between 2 similar images')
-parser.add_argument("--image", type=str,
-                    help="path to the first input image")
+parser.add_argument("--image", type=str, help="path to the first input image")
 parser.add_argument("--image2", type=str, help="path to second input image")
+parser.add_argument("--output", help="Output image file path", default="")
 args = vars(parser.parse_args())
 
 # read 2 images
 # both pictures should be of same res (number of pixels)
 imgToLoad = args["image"]
 img2ToLoad = args["image2"]
+# output file name
+output = args["output"]
 
+# init subplots
+rows, cols = 1, 3
 fig, axes = plt.subplots(1, 3)
 fig.tight_layout()
 fig.suptitle("Difference Between 2 Images")
@@ -43,10 +45,6 @@ if not img.shape == img2.shape:
     print(f"Shape of First Image: {img.shape}")
     print(f"Shape After 'Resizing' of Second Image: {resizedImg.shape}")
 
-
-# calculate square mean error
-
-
 if img.shape == resizedImg.shape:
     print("Shape of Both Imgs is Same")
 
@@ -64,6 +62,12 @@ if img.shape == resizedImg.shape:
         axes[i].axis("off")
         axes[i].set_title(headings[i])
         axes[i].imshow(imgs[i])
+
+    # saving file using --output argument
+    if not output == "":
+        print("Saving Difference Image File!")
+        cv.imwrite(output, diff)
+        print(f"Saved: {output}")
 
     plt.show()
 else:
