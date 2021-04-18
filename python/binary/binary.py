@@ -8,8 +8,7 @@ import argparse
 
 # adding parsing arguments
 parser = argparse.ArgumentParser(description='Convert a gray Scale image into binary image and inverting them')
-parser.add_argument("--image", type=str,
-                help="path to the input image")
+parser.add_argument("--image", type=str,help="path to the input image")
 parser.add_argument("--output", help="Output image file path", default="")
 args = vars(parser.parse_args())
 
@@ -45,7 +44,6 @@ for i in range(0, len(imgs)):
 
 # saving file using --output argument
 if not output == "":
-    print("Saving Binary File!")
     cv.imwrite(output, binaryImg)
     print(f"Saved: {output}")
 

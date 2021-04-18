@@ -8,7 +8,7 @@ import argparse
 
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Prewitt Edge Detection')
-parser.add_argument('--image', help='Path to input image.',default='dataset/original.jpg')
+parser.add_argument('--image', help='Path to input image.')
 parser.add_argument("--output", help="Output File name and path", default="")
 args = vars(parser.parse_args())
 

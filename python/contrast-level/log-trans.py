@@ -50,7 +50,6 @@ for i in range(0, len(imgs)):
     axes[i, 1].hist(imgs[i].ravel(), 256, [0, 255])
 
 if not output == "":
-    print("Saving Log Transformated Image!")
     cv.imwrite(output, improvedConstrast)
     print(f"Saved: {output}")
 

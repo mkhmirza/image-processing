@@ -8,7 +8,7 @@ import argparse
 
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Sobel Edge Detection')
-parser.add_argument('--image', help='Path to input image.', default='dataset/original.jpg')
+parser.add_argument('--image', help='Path to input image.')
 parser.add_argument("--output", help="Output File name and path", default="")
 args = vars(parser.parse_args())
 
@@ -51,7 +51,6 @@ for i in range(0, len(imgs)):
     axs[i].set_title(headings[i])
 
 if not output == "":
-    print("Saving Sobel Image!")
     cv.imwrite(output, g)
     print(f"Saved: {output}")
 

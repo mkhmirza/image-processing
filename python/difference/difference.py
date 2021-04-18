@@ -65,7 +65,6 @@ if img.shape == resizedImg.shape:
 
     # saving file using --output argument
     if not output == "":
-        print("Saving Difference Image File!")
         cv.imwrite(output, diff)
         print(f"Saved: {output}")
 
