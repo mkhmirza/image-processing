@@ -9,7 +9,7 @@ import argparse
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Apply Image Sharpening Filter')
 parser.add_argument('--image', help='Path to input image.')
-parser.add_argument('--variant', help="Enter Variant of Laplacian", default="original")
+parser.add_argument('--variant', help="Enter Variant of Laplacian", default="ori")
 parser.add_argument("--output", help="Output File name and path", default="")
 args = vars(parser.parse_args())
 
@@ -27,10 +27,12 @@ fig.suptitle("Applying Laplacian Filter (Edge Detection)")
 img = cv.imread(imgToLoad, 0)
 
 # if passed argument is original version 
-if variant == "original":
+if variant == "ori":
     laplacianMatrix = [[0, 1, 0], [1, -4, 1], [0, 1, 0]]
 elif variant == "v1": # else apply variant 1
     laplacianMatrix = [[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]]
+elif variant == "v2":
+    laplacianMatrix = [[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]]
 else: # if invalid option is passed 
     print("Invalid Variant! Assigning Original Laplcian Matrix")
     laplacianMatrix = [[0, 1, 0], [1, -4, 1], [0, 1, 0]]
@@ -38,12 +40,12 @@ else: # if invalid option is passed
 # applying laplacian matrix 
 kernel = np.array(laplacianMatrix)
 laplacian = cv.filter2D(img, -1, kernel=kernel)
+# laplacian = cv.Laplacian(img, -1, ksize=5)
 
-# sharpened image
-sharpenImg = cv.absdiff(img, laplacian)
-
-imgs = [img, laplacian, sharpenImg]
-headings = ["Original Image", "Edge Detection", "Sharpened Image"]
+sharpen = cv.subtract(img, laplacian)
+print(sharpen)
+imgs = [img, laplacian, sharpen]
+headings = ["Original Image", "Laplacian Filter", "Sharpen Image"]
 
 for i in range(0, len(imgs)):
     axs[i].axis("off")
@@ -51,7 +53,7 @@ for i in range(0, len(imgs)):
     axs[i].set_title(headings[i])
 
 if not output == "":
-    cv.imwrite(output, laplacian)
+    cv.imwrite(output, sharpen)
     print(f"Saved: {output}")
 
 plt.show()

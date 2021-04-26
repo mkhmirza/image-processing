@@ -50,8 +50,11 @@ for i in range(0, len(imgs)):
     axs[i].imshow(imgs[i], cmap='gray')
     axs[i].set_title(headings[i])
 
+# since ranges of edge detection are from [1 - 255] the resulting image is a black rectangle
+# rather than the edge detected filtered image
+sobel = g * 255
 if not output == "":
-    cv.imwrite(output, g)
+    cv.imwrite(output, sobel)
     print(f"Saved: {output}")
 
 plt.show()
