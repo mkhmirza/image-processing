@@ -24,11 +24,16 @@ fig.suptitle("Applying Mean Smoothing Filter")
 # loading image in grayscale mode
 img = cv.imread(imgToLoad, 0)
 
-meanFilter = [[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]]
-# applying laplacian matrix
-kernel = np.array(meanFilter)
-# also can use cv.medianBlur(src, ksize, dst)
-mean = cv.filter2D(img, -1, kernel=kernel)
+# can apply using matrix
+# meanFilter = [[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]]
+# # applying laplacian matrix
+# kernel = np.array(meanFilter)
+# # also can use cv.medianBlur(src, ksize, dst)
+# mean = cv.filter2D(img, -1, kernel=kernel)
+
+# or using cv.medianBlur method
+# apply smoothin filter of 5x5 size
+mean = cv.medianBlur(img, ksize=5)
 
 imgs = [img, mean]
 headings = ["Original Image",  "After Smoothing"]
