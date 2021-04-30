@@ -9,7 +9,7 @@ import argparse
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Apply Image Sharpening Filter')
 parser.add_argument("-i",'--image', help='Path to input image.')
-parser.add_argument("-v",'--variant', help="Enter Variant of Laplacian", default="ori")
+parser.add_argument("-v",'--variant', help="Enter Variant of Laplacian", default="v1")
 parser.add_argument("-o","--output", help="Output File name and path", default="")
 args = vars(parser.parse_args())
 
@@ -26,12 +26,13 @@ fig.suptitle("Applying Laplacian Filter (Edge Detection)")
 # loading image in grayscale mode
 img = cv.imread(imgToLoad, 0)
 
-# if passed argument is original version 
-if variant == "ori":
+# if passed argument is original version,
+# v1 is representation of the original version 
+if variant == "v1":
     laplacianMatrix = [[0, 1, 0], [1, -4, 1], [0, 1, 0]]
-elif variant == "v1": # else apply variant 1
+elif variant == "v2": # else apply variant 1
     laplacianMatrix = [[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]]
-elif variant == "v2":
+elif variant == "v3":
     laplacianMatrix = [[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]]
 else: # if invalid option is passed 
     print("Invalid Variant! Assigning Original Laplcian Matrix")
