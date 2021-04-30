@@ -8,7 +8,7 @@ import argparse
 
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Applying Histogram Equalization')
-parser.add_argument('--image', help='Path to input image.')
+parser.add_argument('-i','--image', help='Path to input image.')
 args = vars(parser.parse_args())
 
 imgToLoad = args["image"]

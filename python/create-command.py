@@ -39,7 +39,7 @@ outputLaplacian = "output/laplacian.jpg"
 # applying laplacian sharpening filter only
 if 'l' in techniques:
     # creating laplacian command
-    laplacian = f"python3 filters/laplacian.py --image {image} --output {outputLaplacian} --variant ori"
+    laplacian = f"python3 filters/laplacian.py -i {image} -o {outputLaplacian} -v ori"
     
     if verbose:
         print("Creating Command for Laplacian Technique")
@@ -58,12 +58,12 @@ if 's' in techniques or 'p' in techniques:
             print("Creating Command for Sobel Technique")
 
         outputEdgeDetection = "output/sobel.jpg"
-        applyEdgeDetection = f"python3 filters/sobel.py --image {outputLaplacian} --output {outputEdgeDetection}"
+        applyEdgeDetection = f"python3 filters/sobel.py -i {outputLaplacian} -o {outputEdgeDetection}"
     else:  # applying prewitt filter
         if verbose:
             print("Creating Command for Prewitt Technique")
         outputEdgeDetection = "output/prewitt.jpg"
-        applyEdgeDetection = f"python3 filters/prewitt.py --image {outputLaplacian} --output {outputEdgeDetection}"
+        applyEdgeDetection = f"python3 filters/prewitt.py -i {outputLaplacian} -o {outputEdgeDetection}"
     if verbose:
         print(f"Sobel/Prewitt: {applyEdgeDetection}")
     commands.append(applyEdgeDetection)
@@ -76,12 +76,12 @@ if 'po' in techniques or 'lo' in techniques:
         if verbose:
             print("Creating Command for Power Law Transformation")
         outputFinal = "output/power.jpg"
-        contrastLevel = f"python3 contrast-level/power-law.py --image {outputEdgeDetection} --output {outputFinal}"
+        contrastLevel = f"python3 contrast-level/power-law.py -i {outputEdgeDetection} -o {outputFinal}"
     else:  # applying log transformation
         if verbose:
             print("Creating Command for Log Transformation")
         outputFinal = "output/log.jpg"
-        contrastLevel = f"python3 contrast-level/log-trans.py --image {outputEdgeDetection} --output {outputFinal}"
+        contrastLevel = f"python3 contrast-level/log-trans.py -i {outputEdgeDetection} -o {outputFinal}"
     if verbose:
         print(f"PowerLaw/Log: {contrastLevel}")
     commands.append(contrastLevel)

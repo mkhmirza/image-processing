@@ -8,9 +8,9 @@ import argparse
 
 # adding parsing arguments
 parser = argparse.ArgumentParser(description='Difference Between 2 similar images')
-parser.add_argument("--image", type=str, help="path to the first input image")
-parser.add_argument("--image2", type=str, help="path to second input image")
-parser.add_argument("--output", help="Output image file path", default="")
+parser.add_argument("-i","--image", type=str, help="path to the first input image")
+parser.add_argument("-i2","--image2", type=str, help="path to second input image")
+parser.add_argument("-o","--output", help="Output image file path", default="")
 args = vars(parser.parse_args())
 
 # read 2 images

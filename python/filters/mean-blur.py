@@ -8,8 +8,8 @@ import argparse
 
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Apply Mean Smoothing Filter')
-parser.add_argument('--image', help='Path to input image.')
-parser.add_argument("--output", help="Output File name and path", default="")
+parser.add_argument("-i",'--image', help='Path to input image.')
+parser.add_argument("-o","--output", help="Output File name and path", default="")
 args = vars(parser.parse_args())
 
 imgToLoad = args["image"]

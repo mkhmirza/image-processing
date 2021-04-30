@@ -7,9 +7,9 @@ import argparse
 
 # adding parsing arguments
 parser = argparse.ArgumentParser(description='Merges red, green and blue channel into the original image')
-parser.add_argument("--red", type=str, help="path to red channel")
-parser.add_argument("--green", type=str,help="path to green channel")
-parser.add_argument("--blue", type=str,help="path to blue channel")
+parser.add_argument("-r","--red", type=str, help="path to red channel")
+parser.add_argument("-g","--green", type=str,help="path to green channel")
+parser.add_argument("-b","--blue", type=str,help="path to blue channel")
 args = vars(parser.parse_args())
 
 # read 3 images, red channel, green and blue channel

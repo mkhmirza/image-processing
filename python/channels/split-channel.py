@@ -7,7 +7,7 @@ import argparse
 
 # adding parsing arguments
 parser = argparse.ArgumentParser(description='Splits rgb into red, green and blue channel')
-parser.add_argument("--image", type=str, help="path to image file")
+parser.add_argument("-i","--image", type=str, help="path to image file")
 args = vars(parser.parse_args())
 
 # read this file

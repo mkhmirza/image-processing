@@ -8,8 +8,8 @@ import argparse
 
 # adding parsing arguments
 parser = argparse.ArgumentParser( description='Performs Log transformation on an image')
-parser.add_argument("--image", type=str, help="path to the input image")
-parser.add_argument("--output", help="Output File name and path", default="")
+parser.add_argument("-i","--image", type=str, help="path to the input image")
+parser.add_argument("-o","--output", help="Output File name and path", default="")
 args = vars(parser.parse_args())
 
 # img to be read

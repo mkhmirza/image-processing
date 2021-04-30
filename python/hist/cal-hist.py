@@ -8,8 +8,8 @@ import argparse
 
 # adding cmd parser
 parser = argparse.ArgumentParser(description='Comparison Between 2 Pictures using Histogram')
-parser.add_argument('--image', help='Path to input image.')
-parser.add_argument('--image2', help="Path to second input image")
+parser.add_argument('-i','--image', help='Path to input image.')
+parser.add_argument('-i2','--image2', help="Path to second input image")
 args = vars(parser.parse_args())
 
 imgToLoad = args["image"]

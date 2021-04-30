@@ -8,8 +8,8 @@ import argparse
 
 # adding parsing arguments
 parser = argparse.ArgumentParser(description='Convert a gray Scale image into binary image and inverting them')
-parser.add_argument("--image", type=str,help="path to the input image")
-parser.add_argument("--output", help="Output image file path", default="")
+parser.add_argument('-i',"--image", type=str,help="path to the input image")
+parser.add_argument('-o',"--output", help="Output image file path", default="")
 args = vars(parser.parse_args())
 
 # img to be read
